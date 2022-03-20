@@ -1,0 +1,26 @@
+use role sysadmin;
+
+use schema "ECOMMERCE_DB"."ECOMMERCE_DEV";
+
+create table "ECOMMERCE_DB"."ECOMMERCE_DEV"."ORDERS" as  
+select * from "SNOWFLAKE_SAMPLE_DATA"."TPCH_SF1000"."ORDERS" limit 1;
+
+truncate table "ECOMMERCE_DB"."ECOMMERCE_DEV"."ORDERS";
+
+CREATE FILE FORMAT csv_load_format
+    TYPE = 'CSV' 
+    COMPRESSION = 'AUTO' 
+    FIELD_DELIMITER = ',' 
+    RECORD_DELIMITER = '\n' 
+    SKIP_HEADER =1 
+    FIELD_OPTIONALLY_ENCLOSED_BY = '\042' 
+    TRIM_SPACE = FALSE 
+    ERROR_ON_COLUMN_COUNT_MISMATCH = TRUE 
+    ESCAPE = 'NONE' 
+    ESCAPE_UNENCLOSED_FIELD = '\134' 
+    DATE_FORMAT = 'AUTO' 
+    TIMESTAMP_FORMAT = 'AUTO';
+
+
+
+copy into lineitem from @stg_lineitem_csv_dev ON_ERROR = ABORT_STATEMENT;

@@ -1,0 +1,79 @@
+===========================================================================
+================ Tracking Worksheet: AWS Management Console ===============
+===========================================================================
+
+---- Step 1: Information about the Lambda Function (remote service) *****
+
+Your AWS Account ID: 
+
+Lambda Function Name: 
+
+------Step 2: Information about the API Gateway (proxy Service) ********
+
+New IAM Role Name: 
+
+New IAM Role ARN: 
+
+Snowflake VPC ID (optional): N/A
+
+New API Name: 
+
+API Gateway Resource Name: 
+
+Resource Invocation URL: 
+
+Method Request ARN: 
+
+
+Resource Policy : 
+
+{
+    "Version": "2012-10-17",
+    "Statement":
+    [
+        {
+        "Effect": "Allow",
+        "Principal":
+            {
+            "AWS": "arn:aws:sts::<12-digit-number>:assumed-role/<external_function_role>/snowflake"
+            },
+        "Action": "execute-api:Invoke",
+        "Resource": "<method_request_ARN>"
+        }
+    ]
+}
+
+
+
+
+---- Step 3: Information about the API Integration and External Function 
+
+
+API Integration Name: 
+
+API_AWS_IAM_USER_ARN: 
+
+
+API_AWS_EXTERNAL_ID: 
+
+
+IAM TRUST POLICY: 
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "<Row_4_of_desc_integration>"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": {"StringEquals": { "sts:ExternalId": "<Row_6_of_desc_integration>" }}
+    }
+  ]
+}
+
+
+External Function Name: 
+
+

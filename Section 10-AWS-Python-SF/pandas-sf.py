@@ -4,9 +4,9 @@ import snowflake.connector
 # from awsglue.utils import getResolvedOptions
 
 conn = snowflake.connector.connect(
-    user="",
-    password="",
-    account="",
+    user="konhee93",
+    password="dlrjsgml94SN!",
+    account="gi41171.ca-central-1.aws",
     warehouse="compute_wh",
     database="ecommerce_db",
     schema="ECOMMERCE_DEV",

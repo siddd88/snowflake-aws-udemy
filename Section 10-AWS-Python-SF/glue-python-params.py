@@ -9,9 +9,9 @@ supplier_key = args['supplier_key']
 ship_date = args['ship_date']
 
 con = snowflake.connector.connect(
-    user="",
-    password="",
-    account="",
+    user="konhee93",
+    password="dlrjsgml94SN!",
+    account="gi41171.ca-central-1.aws",
     warehouse="compute_wh",
     database="ecommerce_db",
     schema="ECOMMERCE_DEV",
